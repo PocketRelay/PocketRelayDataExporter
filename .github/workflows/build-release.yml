@@ -21,7 +21,7 @@ jobs:
             matrix:
                 include:
                     - target: i686-win7-windows-msvc
-                      filename: pocket-relay-plugin.asi
+                      filename: pocket-relay-data-export.asi
 
         steps:
             # Checkout the repo for building
@@ -49,11 +49,11 @@ jobs:
 
             # Build the binary
             - name: Build
-              run: cargo build --release --target ${{ matrix.target }} -p pocket-relay-plugin
+              run: cargo build --release --target ${{ matrix.target }} -p pocket-relay-data-export
 
             # Copy built binary to output directory
             - name: Rename and move output binary
-              run: cp target/${{ matrix.target }}/release/pocket_relay_plugin.dll ${{ matrix.filename }}
+              run: cp target/${{ matrix.target }}/release/pocket_relay_data_export.dll ${{ matrix.filename }}
               shell: bash
 
             # Upload the built artifact
